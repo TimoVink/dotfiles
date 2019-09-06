@@ -1,8 +1,26 @@
-- clean: ['~']
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+
+- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
+
+- shell:
+  - [sh pre-install.sh, Running pre installation script]
+  - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom folder]
+  - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins folder]
+  - [mkdir -p ~/.oh-my-zsh/custom/themes, Creating oh-my-zsh custom themes folder]
 
 - link:
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
-    ~/.zshrc: zshrc
-
-
+    ~/.zshrc:
+      force: true
+      path: zshrc
+    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: oh-my-zsh/custom/plugins/zsh-autosuggestions/
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    ~/.oh-my-zsh/custom/themes/powerlevel9k: oh-my-zsh/custom/themes/powerlevel9k/
+    
+        

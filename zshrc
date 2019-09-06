@@ -1,5 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
@@ -15,9 +16,14 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source <(command kubectl completion zsh)
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# Add kubectl autocompletions
+if ! [ -x "$(command -v git)" ]; then
+  source <(kubectl completion zsh)
+fi
 
-export DOCKER_HOST=tcp://localhost:2375
-cd ~
+# If on WSL, connect to Docker for Windows
+if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+    export DOCKER_HOST=tcp://localhost:2375
+    cd $HOME
+fi
