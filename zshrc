@@ -1,3 +1,4 @@
+# Configure oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_DISABLE_COMPFIX=true
@@ -25,8 +26,11 @@ fi
 # If on WSL, connect to Docker for Windows
 if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
     export DOCKER_HOST=tcp://localhost:2375
-    cd $HOME
 fi
+
+# Set default editor
+export VISUAL=micro
+export EDITOR="$VISUAL"
 
 # Update PATH
 export PATH="$HOME/.local/bin:$PATH"
