@@ -29,6 +29,9 @@ if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
     export DOCKER_HOST=tcp://localhost:2375
 fi
 
+# Common aliases
+alias please='sudo $(fc -ln -1)'
+
 # Set default editor
 export VISUAL=micro
 export EDITOR="$VISUAL"
