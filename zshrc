@@ -19,8 +19,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Add kubectl autocompletions
-if ! [ -x "$(command -v git)" ]; then
+if [ -x "$(command -v kubectl)" ]; then
   source <(kubectl completion zsh)
+  alias k=kubectl
 fi
 
 # If on WSL, connect to Docker for Windows
