@@ -20,10 +20,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Add kubectl autocompletions
+# Add kubectl autocompletions and helpers
 if [ -x "$(command -v kubectl)" ]; then
   source <(kubectl completion zsh)
   alias k=kubectl
+  function kw { watch -n1 -t -d kubectl $@ }
 fi
 
 # If on WSL, connect to Docker for Windows
