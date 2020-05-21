@@ -45,3 +45,8 @@ alias please='sudo $(fc -ln -1)'
 # Set default editor
 export VISUAL=micro
 export EDITOR="$VISUAL"
+
+# Use system certificates in python based tools
+if [ -f /etc/ssl/certs/ca-certificates.crt ]; then 
+	export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+fi
