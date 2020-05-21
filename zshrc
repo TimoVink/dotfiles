@@ -32,6 +32,13 @@ if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
     export DOCKER_HOST=tcp://localhost:2375
 fi
 
+# Set up pyenv
+if [ -x "$(command -v pyenv)" ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Common aliases
 alias please='sudo $(fc -ln -1)'
 
