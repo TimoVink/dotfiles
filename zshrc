@@ -1,3 +1,6 @@
+# Reset PATH
+export PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+
 # Configure oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -34,6 +37,3 @@ alias please='sudo $(fc -ln -1)'
 # Set default editor
 export VISUAL=micro
 export EDITOR="$VISUAL"
-
-# Update PATH
-export PATH="$HOME/.local/bin:$PATH"
