@@ -27,6 +27,14 @@ if [ -x "$(command -v kubectl)" ]; then
   function kw { watch -n1 -t -d kubectl $@ }
 fi
 
+# Add autocompletions for hashicorp tools
+autoload -U +X bashcompinit && bashcompinit
+for tool in vault terraform; do
+  if [ -x "$(command -v $tool)" ]; then
+    complete -o nospace -C /home/tvink/.local/bin/$tool $tool
+  fi
+done
+
 # If on WSL, connect to Docker for Windows
 if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
     export DOCKER_HOST=tcp://localhost:2375
