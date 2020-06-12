@@ -36,7 +36,7 @@ for tool in vault terraform; do
 done
 
 # If on WSL, connect to Docker for Windows
-if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export DOCKER_HOST=tcp://localhost:2375
   export PATH="$PATH:/mnt/c/Windows/System32:/mnt/c/Windows"
 fi
@@ -48,14 +48,14 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# Use system certificates in python based tools
+if [ -f /etc/ssl/certs/ca-certificates.crt ]; then
+  export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+fi
+
 # Common aliases
 alias please='sudo $(fc -ln -1)'
 
 # Set default editor
 export VISUAL=micro
 export EDITOR="$VISUAL"
-
-# Use system certificates in python based tools
-if [ -f /etc/ssl/certs/ca-certificates.crt ]; then 
-	export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-fi
