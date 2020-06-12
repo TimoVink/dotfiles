@@ -37,7 +37,8 @@ done
 
 # If on WSL, connect to Docker for Windows
 if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-    export DOCKER_HOST=tcp://localhost:2375
+  export DOCKER_HOST=tcp://localhost:2375
+  export PATH="$PATH:/mnt/c/Windows/System32:/mnt/c/Windows"
 fi
 
 # Set up pyenv
