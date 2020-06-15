@@ -1,5 +1,5 @@
 # Reset PATH
-export PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+export PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sr/games:/sbin:/bin"
 
 # Configure oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -36,7 +36,7 @@ for tool in vault terraform; do
 done
 
 # If on WSL, connect to Docker for Windows
-if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
+if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export DOCKER_HOST=tcp://localhost:2375
   export PATH="$PATH:/mnt/c/Windows/System32:/mnt/c/Windows"
 fi
