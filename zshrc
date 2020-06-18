@@ -44,7 +44,12 @@ for tool in vault terraform; do
   fi
 done
 
-# If on WSL, connect to Docker for Windows
+# Add autocompletion for the AWS CLI
+if [ -x "$(command -v aws)" ]; then
+  complete -C "$(which aws_completer)" aws
+fi
+
+# If on WSL, add Windows utils to our PATH
 if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export DOCKER_HOST=tcp://localhost:2375
   export PATH="$PATH:/mnt/c/Windows/System32:/mnt/c/Windows"
