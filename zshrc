@@ -33,11 +33,14 @@ if [ -x "$(command -v kubectl)" ]; then
   function kw { watch -n1 -t -d kubectl $@ }
 fi
 
-# Add autocompletions for hashicorp tools
+# Add autocompletion and aliases for hashicorp tools
 autoload -U +X bashcompinit && bashcompinit
+if [ -x "$(command -v vault)" ]; then
+  alias tf=terraform
+fi
 for tool in vault terraform; do
   if [ -x "$(command -v $tool)" ]; then
-    complete -o nospace -C /home/tvink/.local/bin/$tool $tool
+    complete -o nospace -C "$(which $tool)" $tool
   fi
 done
 
