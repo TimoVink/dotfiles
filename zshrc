@@ -35,7 +35,7 @@ fi
 
 # Add autocompletion and aliases for hashicorp tools
 autoload -U +X bashcompinit && bashcompinit
-if [ -x "$(command -v vault)" ]; then
+if [ -x "$(command -v terraform)" ]; then
   alias tf=terraform
 fi
 for tool in vault terraform; do
