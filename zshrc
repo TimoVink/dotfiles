@@ -50,6 +50,11 @@ if [ -x "$(command -v aws)" ]; then
   function ec2 { aws ssm start-session --target $1 "${@:2}" }
 fi
 
+# Add autocompletion for NPM
+if [ -x "$(command -v npm)" ]; then
+  source <(npm completion)
+fi
+
 # If on WSL, add Windows utils to our PATH and set up our X display
 if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export PATH="$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
