@@ -38,7 +38,7 @@ autoload -U +X bashcompinit && bashcompinit
 if [ -x "$(command -v terraform)" ]; then
   alias tf=terraform
 fi
-for tool in vault terraform; do
+for tool in vault terraform packer; do
   if [ -x "$(command -v $tool)" ]; then
     complete -o nospace -C "$(which $tool)" $tool
   fi
