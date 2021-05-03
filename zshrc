@@ -44,9 +44,10 @@ for tool in vault terraform packer; do
   fi
 done
 
-# Add autocompletion for the AWS CLI
+# Add autocompletion and aliases for the AWS CLI
 if [ -x "$(command -v aws)" ]; then
   complete -C "$(which aws_completer)" aws
+  function ec2 { aws ssm start-session --target $1 "${@:2}" }
 fi
 
 # If on WSL, add Windows utils to our PATH and set up our X display
