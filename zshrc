@@ -51,7 +51,9 @@ fi
 
 # If on WSL, add Windows utils to our PATH
 if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
+  export PATH="$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
   export PATH="$PATH:/mnt/c/Windows/System32:/mnt/c/Windows"
+  export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
 fi
 
 # Set up pyenv
