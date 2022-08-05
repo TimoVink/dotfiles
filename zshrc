@@ -1,5 +1,5 @@
 # Reset PATH
-export PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sr/games:/sbin:/bin"
+export PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Configure oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
