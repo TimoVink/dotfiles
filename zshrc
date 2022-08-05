@@ -63,6 +63,10 @@ if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 fi
 
+if [ -d "/opt/homebrew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Set up pyenv
 if [ -d "$HOME/.pyenv" ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
