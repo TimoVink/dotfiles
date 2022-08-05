@@ -3,9 +3,9 @@
 # Check if homebrew is installed
 echo -n "Checking for homebrew... "
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	if [ -x "$(command -v brew)" ]; then
+	if ! [ -x "$(command -v brew)" ]; then
 		echo -n "installing... "
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null 2>&1
+		NONINTERACTIVE=1 sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" > /dev/null
 		echo "installed"
 	else
 		echo "already installed"
