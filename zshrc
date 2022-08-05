@@ -20,12 +20,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Add syntax-highlighting
-if [ -x "$(command -v pygmentize)" ]; then
-  function ccat { pygmentize -f terminal256 -P style=monokai -g $* }
-  function cless { pygmentize -f terminal256 -P style=monokai -g $* | less -R }
-fi
-
 # Add kubectl autocompletions and helpers
 if [ -x "$(command -v kubectl)" ]; then
   source <(kubectl completion zsh)
@@ -63,8 +57,15 @@ if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 fi
 
+# Initialize homebrew
 if [ -d "/opt/homebrew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Add syntax-highlighting
+if [ -x "$(command -v pygmentize)" ]; then
+  function ccat { pygmentize -f terminal256 -P style=monokai -g $* }
+  function cless { pygmentize -f terminal256 -P style=monokai -g $* | less -R }
 fi
 
 # Set up pyenv
