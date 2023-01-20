@@ -74,6 +74,11 @@ if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 fi
 
+# Set up dotnet tools PATH
+if [ -x "$(command -v dotnet)" ]; then
+  export PATH="$PATH:$HOME/.dotnet/tools"'
+fi
+
 # Initialize homebrew
 if [ -d "/opt/homebrew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
