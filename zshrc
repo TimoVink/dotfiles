@@ -7,7 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time date)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
@@ -15,6 +15,7 @@ POWERLEVEL9K_DATE_FORMAT=%D{%Y-%m-%d}
 
 plugins=(
   zsh-autosuggestions
+  zsh-poetry
   zsh-syntax-highlighting
 )
 
@@ -76,7 +77,7 @@ fi
 
 # Set up dotnet tools PATH
 if [ -x "$(command -v dotnet)" ]; then
-  export PATH="$PATH:$HOME/.dotnet/tools"'
+  export PATH="$PATH:$HOME/.dotnet/tools"
 fi
 
 # Initialize homebrew
