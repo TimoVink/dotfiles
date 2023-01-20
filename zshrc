@@ -104,6 +104,11 @@ if [ -d $GO_DIR ]; then
   export PATH="$GO_DIR:$PATH"
 fi
 
+# Set up rust
+if [ -d "$HOME/.cargo" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # Use system certificates in python based tools
 if [ -f /etc/ssl/certs/ca-certificates.crt ]; then
   export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
