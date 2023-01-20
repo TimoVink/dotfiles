@@ -58,9 +58,19 @@ fi
 
 # If on WSL, add Windows utils to our PATH and set up our X display
 if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
-  export PATH="$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
   export PATH="$PATH:/mnt/c/Windows/System32:/mnt/c/Windows"
-  export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
+  export PATH="$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
+
+  DOCKER_DIR="/mnt/c/Program Files/Docker/Docker/resources/bin"
+  if [ -d $DOCKER_DIR ]; then
+    export PATH="$PATH:$DOCKER_DIR"
+  fi
+
+  VSCODE_DIR="/mnt/c/Program Files/Microsoft VS Code/bin"
+  if [ -d $VSCODE_DIR ]; then
+    export PATH="$PATH:$VSCODE_DIR"
+  fi
+  
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 fi
 
