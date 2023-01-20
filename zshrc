@@ -38,6 +38,13 @@ for tool in vault terraform packer; do
   fi
 done
 
+# Set up nvm
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
+
 # Add autocompletion and aliases for the AWS CLI
 if [ -x "$(command -v aws)" ]; then
   complete -C "$(which aws_completer)" aws
