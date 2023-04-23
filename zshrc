@@ -26,6 +26,10 @@ if [ -x "$(command -v kubectl)" ]; then
   source <(kubectl completion zsh)
   alias k=kubectl
   function kw { watch -n1 -t -d kubectl $@ }
+
+  if [ -d "$HOME/.krew" ]; then
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+  fi
 fi
 
 # Add autocompletion and aliases for hashicorp tools
