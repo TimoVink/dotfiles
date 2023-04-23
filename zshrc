@@ -119,9 +119,10 @@ if [ -d "$HOME/.cargo" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# Use system certificates in python based tools
+# Use system certificates in python and node based tools
 if [ -f /etc/ssl/certs/ca-certificates.crt ]; then
   export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+  export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 fi
 
 # Common aliases
