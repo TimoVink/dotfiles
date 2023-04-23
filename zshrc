@@ -32,6 +32,11 @@ if [ -x "$(command -v kubectl)" ]; then
   fi
 fi
 
+# Add aliases for minikube
+if [ -x "$(command -v minikube)" ]; then
+  function mk { minikube kubectl -- $@ }
+fi
+
 # Add autocompletion and aliases for hashicorp tools
 autoload -U +X bashcompinit && bashcompinit
 if [ -x "$(command -v terraform)" ]; then
