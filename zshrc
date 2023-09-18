@@ -108,6 +108,21 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+
+# Set up poetry
+if [ -x "$(command -v poetry)" ]; then
+  function poetrynew {
+    if [ "$(ls -A .)" ]; then
+      echo "$(pwd) is not empty!"
+    else    
+      poetry new .
+      find . -not -name 'pyproject.toml' -delete
+      poetry add $@
+      cd .
+    fi
+  }
+fi
+
 # Set up Go
 GO_DIR="/usr/local/go/bin"
 if [ -d $GO_DIR ]; then
