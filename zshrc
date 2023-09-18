@@ -121,8 +121,10 @@ fi
 
 # Use system certificates in python and node based tools
 if [ -f /etc/ssl/certs/ca-certificates.crt ]; then
+  export OPENSSL_CONF=/usr/lib/ssl/openssl.cnf
   export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
   export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+  export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 fi
 
 # Common aliases
