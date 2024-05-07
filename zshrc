@@ -123,6 +123,11 @@ if [ -x "$(command -v poetry)" ]; then
   }
 fi
 
+# Set up dagster
+if [ -x "$(command -v dagster)" ]; then
+  export DAGSTER_HOME="$HOME/.dagster"
+fi
+
 # Set up Go
 GO_DIR="/usr/local/go/bin"
 if [ -d $GO_DIR ]; then
