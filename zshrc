@@ -111,15 +111,34 @@ fi
 
 # Set up poetry
 if [ -x "$(command -v poetry)" ]; then
+  function pyprojinit {
+    POETRY_TMP_PATH=/tmp/poetry/$(basename "$PWD")
+  	rm -rf "$POETRY_TMP_PATH"
+  	mkdir -p "$POETRY_TMP_PATH"
+  	pushd "$POETRY_TMP_PATH"
+  	poetry new .
+  	find . -not -name 'pyproject.toml' -delete
+  	popd
+  	mv "$POETRY_TMP_PATH/pyproject.toml" .
+  	rm -rf "$POETRY_TMP_PATH"
+  }
+
   function poetrynew {
-    if [ "$(ls -A .)" ]; then
-      echo "$(pwd) is not empty!"
-    else    
-      poetry new .
-      find . -not -name 'pyproject.toml' -delete
-      poetry add $@
+    pyprojinit
+    poetry add $@
+    cd .
+  }
+
+  function pip2poetry {
+  	if [ ! -f "requirements.txt" ]; then
+  	  echo "No requirements.txt in the current directory!"
+  	elif [ -f "pyproject.toml" ]; then
+  	  echo "There is already a pyproject.toml in the current directory!"
+  	else
+      pyprojinit
+      poetry add $(cat requirements.txt)
       cd .
-    fi
+  	fi
   }
 fi
 
