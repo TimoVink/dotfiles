@@ -108,6 +108,13 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# Set up uv
+if [ -x "$(command -v uv)" ]; then
+  eval "$(uv generate-shell-completion zsh)"
+fi
+if [ -x "$(command -v uvx)" ]; then
+  eval "$(uvx --generate-shell-completion zsh)"
+fi
 
 # Set up poetry
 if [ -x "$(command -v poetry)" ]; then
