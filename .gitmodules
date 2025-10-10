@@ -10,6 +10,6 @@
 [submodule "oh-my-zsh/custom/themes/powerlevel10k"]
 	path = oh-my-zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-[submodule "oh-my-zsh/custom/plugins/zsh-poetry"]
-	path = oh-my-zsh/custom/plugins/zsh-poetry
-	url = https://github.com/darvid/zsh-poetry
+[submodule "oh-my-zsh/custom/plugins/zsh-uv-env"]
+	path = oh-my-zsh/custom/plugins/zsh-uv-env
+	url = https://github.com/matthiasha/zsh-uv-env
