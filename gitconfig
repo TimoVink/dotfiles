@@ -1,3 +1,6 @@
 [user]
 	email = timovink@gmail.com
 	name = Timo Vink
+[core]
+	filemode = false
+	autocrlf = true
