@@ -80,8 +80,6 @@ if grep -iqE "(Microsoft|WSL)" /proc/version &> /dev/null; then
   if [ -d $VSCODE_DIR ]; then
     export PATH="$PATH:$VSCODE_DIR"
   fi
-  
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 fi
 
 # Set up dotnet tools PATH
