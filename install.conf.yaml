@@ -6,19 +6,12 @@
     shell:
       stderr: true
 
-- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
+- clean: ['~']
 
 - shell:
   - [bash pre-install.sh, Running pre installation script]
-  - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom folder]
-  - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins folder]
-  - [mkdir -p ~/.oh-my-zsh/custom/themes, Creating oh-my-zsh custom themes folder]
 
 - link:
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
-    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: oh-my-zsh/custom/plugins/zsh-autosuggestions/
-    ~/.oh-my-zsh/custom/plugins/zsh-poetry: oh-my-zsh/custom/plugins/zsh-poetry/
-    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
-    ~/.oh-my-zsh/custom/themes/powerlevel10k: oh-my-zsh/custom/themes/powerlevel10k/

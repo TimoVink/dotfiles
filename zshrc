@@ -3,6 +3,7 @@ export PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
 
 # Configure oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh/custom"
 
 ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -15,8 +16,8 @@ POWERLEVEL9K_DATE_FORMAT=%D{%Y-%m-%d}
 
 plugins=(
   zsh-autosuggestions
-  zsh-poetry
   zsh-syntax-highlighting
+  zsh-uv-env
 )
 
 source $ZSH/oh-my-zsh.sh
