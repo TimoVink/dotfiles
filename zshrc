@@ -22,6 +22,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Initialize homebrew
+if [ -d "/opt/homebrew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Add kubectl autocompletions and helpers
 if [ -x "$(command -v kubectl)" ]; then
   source <(kubectl completion zsh)
@@ -86,11 +91,6 @@ fi
 # Set up dotnet tools PATH
 if [ -x "$(command -v dotnet)" ]; then
   export PATH="$PATH:$HOME/.dotnet/tools"
-fi
-
-# Initialize homebrew
-if [ -d "/opt/homebrew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Add syntax-highlighting
